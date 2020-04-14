@@ -32,14 +32,14 @@ jobs:
       env:
         NBM_SIGN_PASS: ${{ secrets.NBM_SIGN_PASS }}
       # For Stable, use set-spec-version
-      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/MeFisto94/sdk-update-center/releases/download/master_${{ github.run_id }} set-impl-version suite.nbms unset-impl-version
+      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/jMonkeyEngine/sdk-update-center/releases/download/nightly_${{ github.run_id }} set-impl-version suite.nbms unset-impl-version
       
     - name: Upload nbms
       uses: softprops/action-gh-release@v1
       with:
         files: build/updates/*.nbm
         body: Nightlies built from Commit ${{ github.sha }}.
-        tag_name: master_${{ github.run_id }}
+        tag_name: nightly_${{ github.run_id }}
         name: Master Nightlies ${{ github.run_id }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
