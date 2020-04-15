@@ -1,1 +1,1 @@
-SDK_SHA=c63b74256de3a9bad5495db993329f6aacefc843
+echo "::set-env name=sdk_sha::c63b74256de3a9bad5495db993329f6aacefc843"
