@@ -49,7 +49,7 @@ jobs:
         files: build/updates/*.nbm
         body: Nightlies built from commit [${{ env.sdk_sha }}](https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }})
         tag_name: nightly_${{ github.run_number }}
-        name: Master Nightlies ${{ github.run_number }} ([${{ env.sdk_sha }}](https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }}))
+        name: "Master Nightlies #${{ github.run_number }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
