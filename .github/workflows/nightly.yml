@@ -13,10 +13,7 @@ jobs:
         path: ci
     - name: Load SDK Target Commit hash
       run: chmod u+x ci/target && ./ci/target
-      
-    - name: Debug Statement
-      run: echo ${{ env.sdk_sha }}
-      
+
     # Then checkout the correct commit
     - uses: actions/checkout@v2
       with:
@@ -50,7 +47,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: build/updates/*.nbm
-        body: Nightlies built from Commit ${{ github.sha }}.
+        body: Nightlies built from commit [${{ env.sdk_sha }}](https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }})
         tag_name: nightly_${{ github.run_id }}
         name: Master Nightlies ${{ github.run_id }}
       env:
@@ -72,4 +69,4 @@ jobs:
       
     - name: Commit the updates.xml
       working-directory: ./xml
-      run: git add updates.xml && git commit -m "Updating the nightlies to ${{ github.run_id}}" && git push
+      run: git add updates.xml && git commit -m "Updating the nightlies to https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }}" && git push
