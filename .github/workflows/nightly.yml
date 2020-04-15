@@ -14,11 +14,14 @@ jobs:
     - name: Load SDK Target Commit hash
       run: chmod u+x ci/target && ./ci/target
       
+    - name: Debug Statement
+      run: echo ${{ env.sdk_sha }}
+      
     # Then checkout the correct commit
     - uses: actions/checkout@v2
       with:
         repository: 'jMonkeyEngine/sdk'
-        ref: ${{ env.SDK_SHA }}
+        ref: ${{ env.sdk_sha }}
       
     - name: Set up JDK 11
       uses: actions/setup-java@v1
