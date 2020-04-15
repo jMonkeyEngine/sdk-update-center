@@ -12,7 +12,7 @@ jobs:
       with:
         path: ci
     - name: Load SDK Target Commit hash
-      run: chmod u+x ci/target && ./target
+      run: chmod u+x ci/target && ./ci/target
       
     # Then checkout the correct commit
     - uses: actions/checkout@v2
