@@ -1,8 +1,8 @@
-name: Nightly Generation
+name: v3.3 Generation
 
 on:
   push:
-    branches: [ nightly ]
+    branches: [ v3.3 ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,32 +37,32 @@ jobs:
     - name: Build the SDK
       run: ./gradlew buildSdk
       
-    - name: Build Nightly NBMs
+    - name: Build v3.3 NBMs
       env:
         NBM_SIGN_PASS: ${{ secrets.NBM_SIGN_PASS }}
       # For Stable, use set-spec-version
-      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/jMonkeyEngine/sdk-update-center/releases/download/nightly_${{ github.run_id }} set-impl-version suite.nbms unset-impl-version
+      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/jMonkeyEngine/sdk-update-center/releases/download/v3.3_${{ github.run_id }} set-impl-version suite.nbms unset-impl-version
       
     - name: Upload nbms
       uses: softprops/action-gh-release@v1
       with:
         files: build/updates/*.nbm
-        body: Nightlies built from commit [${{ env.sdk_sha }}](https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }})
-        tag_name: nightly_${{ github.run_number }}
-        name: "Master Nightlies #${{ github.run_number }}"
+        body: v3.3 built from commit [${{ env.sdk_sha }}](https://github.com/jMonkeyEngine/sdk/commit/${{ env.sdk_sha }})
+        tag_name: v3.3_${{ github.run_number }}
+        name: "v3.3 #${{ github.run_number }}"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Checkout the XML Repository
       uses: actions/checkout@v2
       with:
-        ref: nightly-xml
+        ref: v3.3-xml
         path: xml
       
     - name: Setup Git for the commit
       run: git config user.email MeFisto94@users.noreply.github.com && git config user.name MeFisto94
       working-directory: xml
-      
+
     - name: Overwrite the updates.xml
       # \cp to prevent an alias to cp -i (interactive)
       run: \cp -rf build/updates/updates.xml xml/updates.xml
