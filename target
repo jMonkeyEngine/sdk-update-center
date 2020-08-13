@@ -1,1 +1,1 @@
-echo "::set-env name=sdk_sha::489487f6d4970efebd8a5825cdb668bbf383e9ce"
+echo "::set-env name=sdk_sha::56cdc94e55a18b4b05bf8e77467db08802c6d491"
