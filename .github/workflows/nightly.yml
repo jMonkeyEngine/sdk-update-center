@@ -41,7 +41,7 @@ jobs:
       env:
         NBM_SIGN_PASS: ${{ secrets.NBM_SIGN_PASS }}
       # For Stable, use set-spec-version
-      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/jMonkeyEngine/sdk-update-center/releases/download/nightly_${{ github.run_id }} set-impl-version suite.nbms unset-impl-version
+      run: ant -Dstorepass="$NBM_SIGN_PASS" -Dcatalog.base.url=https://github.com/jMonkeyEngine/sdk-update-center/releases/download/nightly_${{ github.run_number }} set-impl-version suite.nbms unset-impl-version
       
     - name: Upload nbms
       uses: softprops/action-gh-release@v1
