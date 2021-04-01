@@ -1,1 +1,1 @@
-echo "::set-env name=sdk_sha::19c0b2ce2c8ab1e294bb4679ff620499719a5171"
+echo "sdk_sha=19c0b2ce2c8ab1e294bb4679ff620499719a5171" >> $GITHUB_ENV
