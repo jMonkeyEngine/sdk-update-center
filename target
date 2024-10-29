@@ -1,1 +1,1 @@
-echo "sdk_sha=bdb7db817c4b58fafd7242f618addd992bd79487" >> $GITHUB_ENV
+echo "sdk_sha=558dc0a36db78ec7ee70da054864004a4308ff7c" >> $GITHUB_ENV
